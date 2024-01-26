@@ -43,7 +43,7 @@ npm run build && npm run start
 - `NextJS` was used because `create-react-app` is deprecated and it was suggested to use other frameworks such as `NextJS` instead of `create-react-app`. Source: https://react.dev/learn/start-a-new-react-project and https://github.com/facebook/create-react-app/issues/13072
 
 ## Possible Improvements
-- Use assets for the weather statuses.
+- Use images for the weather statuses.
 - If the components get complicated due to numerous dependencies, Context API or Redux may be suggested to replace Props drilling.
 - Loading mechanisms for better UI experience may be implemented.
 

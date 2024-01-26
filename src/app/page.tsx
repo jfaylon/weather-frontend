@@ -31,6 +31,7 @@ export default function Home() {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const [trafficTimestamp, setTrafficTimestamp] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleDateTimeChange = (date: Moment | null) => {
     if (date) {
@@ -40,6 +41,7 @@ export default function Home() {
 
   const handleDateTimeClose = async () => {
     if (dateTime) {
+      setIsLoading(true);
       const formattedDateTime = dateTime?.format(dateTimeFormat);
       try {
         const data = await axios.get(
@@ -48,6 +50,8 @@ export default function Home() {
         setLocationData(data.data.data);
       } catch (error) {
         setLocationData(null);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -58,6 +62,7 @@ export default function Home() {
 
   useEffect(() => {
     const formattedDateTime = moment()?.format(dateTimeFormat);
+    setIsLoading(true);
     axios
       .get(
         `${process.env.NEXT_PUBLIC_API_URL}/locations?dateTime=${formattedDateTime}`
@@ -67,6 +72,9 @@ export default function Home() {
       })
       .catch((error) => {
         setLocationData(null);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -114,6 +122,7 @@ export default function Home() {
           <LocationSelect
             locationData={locationData}
             handleSelectChange={handleSelectChange}
+            isLoading={isLoading}
           />
           <TrafficDisplay
             timestamp={trafficTimestamp}

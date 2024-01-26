@@ -6,16 +6,20 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 interface LocationSelectProps {
   locationData: LocationData[] | null;
   handleSelectChange: (event: SelectChangeEvent) => void;
+  isLoading: boolean;
 }
 
 export const LocationSelect: React.FC<LocationSelectProps> = ({
   locationData,
+  isLoading,
   handleSelectChange,
 }) => {
   return (
     <div className="flex flex-col items-center">
       <FormControl sx={{ m: 1, minWidth: 300, maxWidth: 400 }}>
-        <InputLabel id="select-location">Location</InputLabel>
+        <InputLabel id="select-location">
+          {`Location ${isLoading ? "Loading..." : ""}`}
+        </InputLabel>
         <Select
           labelId="select-location"
           defaultValue=""
@@ -24,6 +28,7 @@ export const LocationSelect: React.FC<LocationSelectProps> = ({
           renderValue={(value) =>
             value.slice(0, 30) + (value.length > 30 ? "..." : "")
           }
+          disabled={isLoading}
         >
           {locationData ? (
             locationData?.map((data) => {

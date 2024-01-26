@@ -46,5 +46,6 @@ npm run build && npm run start
 - Use images for the weather statuses.
 - If the components get complicated due to numerous dependencies, Context API or Redux may be suggested to replace Props drilling.
 - Loading mechanisms for better UI experience may be implemented.
+- Localisation of date formats. 
 
 

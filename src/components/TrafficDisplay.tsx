@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { DATE_FIELD, TIME_FIELD, TRAFFIC_STATUS } from "@/app/constants";
 
 interface TrafficDisplayProps {
   image: string | null;
@@ -16,9 +17,15 @@ export const TrafficDisplay: React.FC<TrafficDisplayProps> = ({
     <div className="flex flex-col items-center">
       {image && (
         <div className="flex flex-col items-center">
-          <p>{`Traffic as of`}</p>
-          <p><span className="font-bold">Date:</span> {`${timestamp?.split("T")[0]}`}</p>
-          <p><span className="font-bold">Time:</span> {`${timestamp?.split("T")[1]}`}</p>
+          <p>{TRAFFIC_STATUS}</p>
+          <p>
+            <span className="font-bold">{DATE_FIELD}</span>{" "}
+            {`${timestamp?.split("T")[0]}`}
+          </p>
+          <p>
+            <span className="font-bold">{TIME_FIELD}</span>{" "}
+            {`${timestamp?.split("T")[1]}`}
+          </p>
           <Image src={image} alt={location} width={300} height={300} />
         </div>
       )}

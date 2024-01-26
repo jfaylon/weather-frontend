@@ -1,5 +1,13 @@
 import React from "react";
 import { WeatherData } from "@/interfaces/WeatherData";
+import {
+  AREA_FIELD,
+  DATE_FIELD,
+  STATUS_FIELD,
+  TIME_FIELD,
+  WEATHER_NOT_FOUND,
+  WEATHER_TITLE,
+} from "@/app/constants";
 
 export const WeatherDisplay: React.FC<{ weather: WeatherData | null }> = ({
   weather,
@@ -10,23 +18,23 @@ export const WeatherDisplay: React.FC<{ weather: WeatherData | null }> = ({
       weather.locationDateTimeWeatherDetails &&
       Object.keys(weather.locationDateTimeWeatherDetails).length ? (
         <div className="flex flex-col items-center">
-          <p className="text-xl">Weather</p>
+          <p className="text-xl">{WEATHER_TITLE}</p>
           <p>
-            <span className="font-bold">Area:</span>{" "}
+            <span className="font-bold">{AREA_FIELD}</span>{" "}
             {`${weather.locationDateTimeWeatherDetails.area}`}
           </p>
           <p>
-            <span className="font-bold">Status:</span>{" "}
+            <span className="font-bold">{STATUS_FIELD}</span>{" "}
             {`${weather.locationDateTimeWeatherDetails.forecast}`}
           </p>
           <p>
-            <span className="font-bold">Date:</span>{" "}
+            <span className="font-bold">{DATE_FIELD}</span>{" "}
             {` ${
               weather.locationDateTimeWeatherDetails.timestamp.split("T")[0]
             }`}
           </p>
           <p>
-            <span className="font-bold">Time:</span>{" "}
+            <span className="font-bold">{TIME_FIELD}</span>{" "}
             {`${
               weather.locationDateTimeWeatherDetails.timestamp.split("T")[1]
             }`}
@@ -35,7 +43,7 @@ export const WeatherDisplay: React.FC<{ weather: WeatherData | null }> = ({
       ) : !weather ? (
         ""
       ) : (
-        <p>Weather Information Not Found</p>
+        <p>{WEATHER_NOT_FOUND}</p>
       )}
     </>
   );

@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { SelectChangeEvent } from "@mui/material/Select";
 import CssBaseline from "@mui/material/CssBaseline";
+import { TITLE } from "@/app/constants";
 
 const lightTheme = createTheme({
   palette: {
@@ -113,7 +114,7 @@ export default function Home() {
       <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <main className="flex min-h-screen flex-col justify-evenly items-center p-24">
-          <p className="text-lg">SG Traffic and Weather</p>
+          <p className="text-lg">{TITLE}</p>
           <DateTimePicker
             dateTime={dateTime}
             handleDateTimeChange={handleDateTimeChange}

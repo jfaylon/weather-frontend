@@ -16,7 +16,7 @@ export const WeatherDisplay: React.FC<{ weather: WeatherData | null }> = ({
             {`${weather.locationDateTimeWeatherDetails.area}`}
           </p>
           <p>
-            <span className="font-bold">Forecast:</span>{" "}
+            <span className="font-bold">Status:</span>{" "}
             {`${weather.locationDateTimeWeatherDetails.forecast}`}
           </p>
           <p>

@@ -47,5 +47,6 @@ npm run build && npm run start
 - If the components get complicated due to numerous dependencies, Context API or Redux may be suggested to replace Props drilling.
 - Loading mechanisms for better UI experience may be implemented.
 - Localisation of date formats. 
+- If data can be provided for future forecasts, the weather information can show the previous / next 5 timings.
 
 

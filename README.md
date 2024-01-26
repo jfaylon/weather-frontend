@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather Frontend
 
-## Getting Started
+A frontend react app that utilises data.gov.sg APIs to retrieve traffic and weather information. This is in tandem with https://github.com/jfaylon/weather-backend
 
-First, run the development server:
+## Prequisites
 
+- Must be able to connect to the backend server using https://github.com/jfaylon/weather-backend
+- Node version used is v18.17.1. It is not guaranteed that it will work for newer or older versions.
+- NextJS v14.1.0 was used.
+
+## Installation
+
+- Clone the repository and install node modules
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Add the ENVs to a .env file or copy the .env.example file
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running the Application
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Running in development mode 
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+- Running in production mode
+```
+npm run build && npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech limitations and Assumptions
+- MUI was used for the date time picker and the select dropdown because it has good pre-built components for the use case.
+- The MobileDateTimePicker was used to lessen or prevent keyboard strokes when using the desktop
+- There were no images found in the 3rd Party APIs to make the weather more appealing.
+- the entire formatted name was used because it was found out that there multiple cameras with the same name like `Bukit Merah Expressway`.
+- Props drilling was used due to the nature of the use case that the components are not deeply nested and have less dependencies between each other.
+- The minimum comparable phone tested was iPhone XR as per Google Developer Tools. This may not guarantee phones that have smaller resolutions.
+- `NextJS` was used because `create-react-app` is deprecated and it was suggested to use other frameworks such as `NextJS` instead of `create-react-app`. Source: https://react.dev/learn/start-a-new-react-project and https://github.com/facebook/create-react-app/issues/13072
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Possible Improvements
+- Use assets for the weather statuses.
+- If the components get complicated due to numerous dependencies, Context API or Redux may be suggested to replace Props drilling.
+- Loading mechanisms for better UI experience may be implemented.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
